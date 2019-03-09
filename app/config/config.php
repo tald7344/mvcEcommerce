@@ -5,6 +5,6 @@
 		define('DS', DIRECTORY_SEPARATOR);
 	}
 
-	var_dump(dirname(realpath(__FILE__)));
 
-	defined('APP_PATH') 			? null : define('APP_PATH', );
+	defined('APP_PATH') 			? null : define('APP_PATH', dirname(realpath(__FILE__)) . DS . '..' . DS);
+	
