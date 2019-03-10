@@ -1,6 +1,6 @@
 <?php
 
-	namespace PHPECOM\Controllers\Admin;
+	namespace PHPECOM\Admin\Controllers;
 
 	class UsersController extends AbstractController {
 		public function defaultAction() {

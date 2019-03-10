@@ -1,6 +1,6 @@
 <?php
 
-	namespace PHPECOM\Controllers\Admin;
+	namespace PHPECOM\Admin\Controllers;
 	use PHPECOM\Libraries\FrontController;
 
 	class AbstractController {

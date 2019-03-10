@@ -5,7 +5,7 @@
 	class FrontController {
 
 		const NOT_FOUND_CONTROLLERS 		= 'PHPECOM\Controllers\NotFoundController';
-		const NOT_FOUND_ADMIN_CONTROLLERS 	= 'PHPECOM\Controllers\Admin\NotFoundController';
+		const NOT_FOUND_ADMIN_CONTROLLERS 	= 'PHPECOM\Admin\Controllers\NotFoundController';
 		const NOT_FOUND_ACTIONS 			= 'notfoundAction';
 
 		private $_source = null,
@@ -45,7 +45,7 @@
 		}
 
 		public function dispatch() {
-			$controllername = 'PHPECOM\Controllers\\' . $this->_source . ucfirst($this->_controllers) . 'Controller';
+			$controllername = 'PHPECOM\\' . $this->_source . 'Controllers\\' . ucfirst($this->_controllers) . 'Controller';
 			$actionsname = $this->_actions . 'Action';
 			if (!class_exists($controllername) || !method_exists($controllername, $actionsname)) {
 				$controllername = $this->_source == null ? self::NOT_FOUND_CONTROLLERS : self::NOT_FOUND_ADMIN_CONTROLLERS;
