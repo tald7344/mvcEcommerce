@@ -2,10 +2,10 @@
 
 	namespace PHPECOM\Controllers;
 
-	class IndexController extends AbstractController {
+	class UsersController extends AbstractController {
 		
 		public function defaultAction() {
-			echo 'Index Default';
+			echo 'Users Default';
 			$this->_view();
 		}
 	}
