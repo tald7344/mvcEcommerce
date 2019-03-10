@@ -3,6 +3,10 @@
 	namespace PHPECOM\Libraries;
 
 	class FrontController {
+
+		const NOT_FOUND_CONTROLLERS = 'PHPECOM\Controllers\NotFoundController';
+		const NOT_FOUND_ACTIONS 	= 'notfoundAction';
+
 		private $_controllers = 'index',
 				$_actions = 'default',
 				$_params = array();
@@ -26,7 +30,16 @@
 
 		public function dispatch() {
 			$controllername = 'PHPECOM\Controllers\\' . ucfirst($this->_controllers) . 'Controller';
-			var_dump($controllername);
+			$actionsname = $this->_actions . 'Action';
+			if (!class_exists($controllername) || !method_exists($controllername, $actionsname)) {
+				$controllername = self::NOT_FOUND_CONTROLLERS;
+				$actionsname = $this->_actions = self::NOT_FOUND_ACTIONS;
+			}
+			$controller = new $controllername();
+			$controller->getController($this->_controllers);
+			$controller->getActions($this->_actions);
+			$controller->getParams($this->_params);
+			$controller->$actionsname();
 		}
 
 	}
