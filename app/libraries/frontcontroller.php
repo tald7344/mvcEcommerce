@@ -24,6 +24,9 @@
 			}
 		}
 
+		public function dispatch() {
+			$controllername = 'PHPECOM\Controllers\\' . ucfirst($this->_controllers) . 'Controller';
+			var_dump($controllername);
+		}
 
-		
 	}

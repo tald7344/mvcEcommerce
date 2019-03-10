@@ -2,7 +2,7 @@
 
 	namespace PHPECOM;
 	use PHPECOM\Libraries\FrontController;
-	
+
 
 	if (!defined('DS')) {
 		define('DS', DIRECTORY_SEPARATOR);
@@ -12,3 +12,4 @@
 	require APP_PATH . 'libraries' . DS . 'autoload.php';
 
 	$frontcontroller = new FrontController();
+	$frontcontroller->dispatch();
