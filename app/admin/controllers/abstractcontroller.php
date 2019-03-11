@@ -6,7 +6,8 @@
 	class AbstractController {
 		public $controllers = 'index',
 			   $actions = 'default',
-			   $params = array();
+			   $params = array(),
+			   $template;
 
 		public function notfoundAction() {
 			// echo 'Sorry This Class Is Not Found';
@@ -24,20 +25,17 @@
 			$this->params = $paramsname;
 		}
 
+		public function getTemplate($template) {
+			$this->template = $template;
+		}
+
 		protected function _view() {
 			$path = ADMIN_VIEW_PATH . $this->controllers . DS . $this->actions . '.view.php';
 			if ($this->actions == FrontController::NOT_FOUND_ACTIONS || !file_exists($path)) {
 				$path = ADMIN_VIEW_PATH . 'notfound' . DS . 'notfound.view.php';
 			}
-			require ADMIN_TEMPLATES_PATH . 'header_start.php';
-			require ADMIN_TEMPLATES_PATH . 'header_sources.php';
-			require ADMIN_TEMPLATES_PATH . 'header_end.php';			
-			require ADMIN_TEMPLATES_PATH . 'wrapper_start.php';			
-			require ADMIN_TEMPLATES_PATH . 'navbar.php';			
-			require $path;
-			require ADMIN_TEMPLATES_PATH . 'wrapper_end.php';
-			require ADMIN_TEMPLATES_PATH . 'footer_sources.php';		
-			require ADMIN_TEMPLATES_PATH . 'footer.php';			
+			$this->template->setActionViewFile($path);
+			$this->template->renderTemplates();
 		}			   
 
 

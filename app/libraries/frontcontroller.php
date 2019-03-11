@@ -11,9 +11,11 @@
 		private $_source = null,
 				$_controllers = 'index',
 				$_actions = 'default',
-				$_params = array();
+				$_params = array(),
+				$_template;
 
-		public function __construct() {
+		public function __construct(Template $template) {
+			$this->_template = $template;
 			$this->parseUrl();
 		}
 
@@ -55,6 +57,7 @@
 			$controller->getController($this->_controllers);
 			$controller->getActions($this->_actions);
 			$controller->getParams($this->_params);
+			$controller->getTemplate($this->_template);
 			$controller->$actionsname();
 		}
 

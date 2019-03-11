@@ -6,7 +6,8 @@
 	class AbstractController {
 		public $controllers = 'index',
 			   $actions = 'default',
-			   $params = array();
+			   $params = array(),
+			   $template;
 
 		public function notfoundAction() {
 			// echo 'Sorry This Class Is Not Found';
@@ -22,6 +23,10 @@
 
 		public function getParams($paramsname) {
 			$this->params = $paramsname;
+		}
+
+		public function getTempalte($template) {
+			$this->template = $template;
 		}
 
 		protected function _view() {
