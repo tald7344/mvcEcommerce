@@ -8,10 +8,10 @@
 			   $Password,
 			   $Email;
 
-		private static $_tableName = '';
-		private static $_tableSchema = array(
-			'Username' => self::DATA_TYPE_STR,
-			'Password' => self::DATA_TYPE_STR,
-			'Email'   => self::DATA_TYPE_STR,
+		protected static $_tableName = 'app_users';
+		protected static $_tableSchema = array(
+			'Username' 	=> self::DATA_TYPE_STR,
+			'Password' 	=> self::DATA_TYPE_STR,
+			'Email'   	=> self::DATA_TYPE_BOOL,
 		);
 	}

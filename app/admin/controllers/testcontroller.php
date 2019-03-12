@@ -2,14 +2,11 @@
 
 	namespace PHPECOM\Admin\Controllers;
 	use PHPECOM\Libraries\Database\DatabaseHandler;
+	use PHPECOM\Admin\Models\UsersGroupModel;
 
 	class TestController extends AbstractController {
 		public function defaultAction() {
-			$sql = 'select * from app_users_groups';
-			$conn = DatabaseHandler::getInstance()->prepare($sql);
-			$conn->execute();
-			$f = $conn->fetchAll();
-			var_dump($f);
+			echo UsersGroupModel::getTableModelName();
 			$this->_view();
 		}
 	}
