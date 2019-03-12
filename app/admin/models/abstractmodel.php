@@ -35,9 +35,27 @@
 			$stmt = DatabaseHandler::getInstance()->prepare($sql);
 			$this->prepareBindValue($stmt);
 			if ($stmt->execute()) {
+				$this->{static::$_primarykey} = DatabaseHandler::getInstance()->lastInsertId();
 				return true;
 			}
 			return false;
+		}
+
+		public function update() {
+			$sql = 'UPDATE ' . static::$_tableName . ' SET ' . self::getTableSchema() . ' WHERE ' . static::$_primarykey . ' = ' . $this->{static::$_primarykey};
+			$stmt = DatabaseHandler::getInstance()->prepare($sql);
+			$this->prepareBindValue($stmt);
+			return $stmt->execute();
+		}
+
+		public function save() {
+			return $this->{static::$_primarykey} === null ? $this->create() : $this->update();
+		}
+
+		public function delete() {
+			$sql = 'DELETE FROM ' . static::$_tableName . ' WHERE ' . static::$_primarykey . ' = ' . $this->{static::$_primarykey};
+			$stmt = DatabaseHandler::getInstance()->prepare($sql);
+			return $stmt->execute();
 		}
 
 
