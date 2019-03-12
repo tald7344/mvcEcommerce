@@ -3,6 +3,7 @@
 	namespace PHPECOM;
 	use PHPECOM\Libraries\FrontController;
 	use PHPECOM\Libraries\Template;
+	use PHPECOM\Libraries\Database\DatabaseHandler;
 
 
 	if (!defined('DS')) {
@@ -13,6 +14,7 @@
 	require APP_PATH . 'libraries' . DS . 'autoload.php';
 	$templatePath = require APP_PATH . 'config' . DS . 'templateconfig.php';
 
+	DatabaseHandler::getInstance();
 	$template = new Template($templatePath);
 
 	$frontcontroller = new FrontController($template);

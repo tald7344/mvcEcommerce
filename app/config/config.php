@@ -13,3 +13,8 @@
 	defined('JS') 					? null : define('JS', DS . 'js' . DS);
 	defined('CSS') 					? null : define('CSS', DS . 'css' . DS);
 	
+	// Connect To Database
+	defined('DATABASE_HOST_NAME') 	? null : define('DATABASE_HOST_NAME', 'localhost');
+	defined('DATABASE_NAME') 		? null : define('DATABASE_NAME', 'mvc_market');
+	defined('DATABASE_USERNAME') 	? null : define('DATABASE_USERNAME', 'root');
+	defined('DATABASE_PASSWORD') 	? null : define('DATABASE_PASSWORD', '');
