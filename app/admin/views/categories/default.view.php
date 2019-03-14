@@ -22,13 +22,13 @@
 											echo $cat->Catdesc;
 										}
 									echo '</p>';
-									if ($cat->CatVisible == 1) {
+									if ($cat->CatVisible == 0) {
 										echo '<span class="visible">Hidden</span>';
 									}
-									if ($cat->CatComment == 1) {
+									if ($cat->CatComment == 0) {
 										echo '<span class="comment">Comments Disabled</span>';
 									}					
-									if ($cat->CatAds == 1) {
+									if ($cat->CatAds == 0) {
 										echo '<span class="ads">Ads Disabled</span>';
 									}
 								echo '</div>';		
