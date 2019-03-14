@@ -4,10 +4,15 @@
 
 	class Template {
 		private $_templatesPath,
+				$_data,
 				$_action_view;
 
 		public function __construct($templatesPath) {
 			$this->_templatesPath = $templatesPath;
+		}
+
+		public function getData($data) {
+			$this->_data = $data;
 		}
 
 		public function setActionViewFile($path) {
@@ -15,6 +20,7 @@
 		}
 
 		private function renderTemplateHeaderStart() {
+			extract($this->_data);
 			require_once ADMIN_TEMPLATES_PATH . 'header_start.php';
 		}
 
@@ -34,6 +40,7 @@
 			} else {
 				$templates = $this->_templatesPath['templates'];
 				if (!empty($templates)) {
+					extract($this->_data);					
 					foreach($templates as $template => $templatePath) {
 						if ($template == ':content') {
 							require_once $this->_action_view;
@@ -54,6 +61,7 @@
 			} else {
 				$cssResources = $this->_templatesPath['header_resources'];
 				if (!empty($cssResources)) {
+					extract($this->_data);					
 					foreach($cssResources as $resource => $resourcekey) {
 						$output .= '<link rel="stylesheet" href="' . $resourcekey . '" />';
 					}
@@ -70,6 +78,7 @@
 			} else {
 				$jsResources = $this->_templatesPath['footer_resources'];
 				if (!empty($jsResources)) {
+					extract($this->_data);					
 					foreach($jsResources as $resource => $resourcekey) {
 						$output .= '<script src="' . $resourcekey . '"></script>';
 					}

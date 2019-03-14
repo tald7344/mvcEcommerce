@@ -6,7 +6,7 @@
 
 	class TestController extends AbstractController {
 		public function defaultAction() {
-			echo UsersGroupModel::getTableModelName();
+			$this->_data['group'] = UsersGroupModel::getAll();
 			$this->_view();
 		}
 	}

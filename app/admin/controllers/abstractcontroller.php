@@ -7,7 +7,8 @@
 		public $controllers = 'index',
 			   $actions = 'default',
 			   $params = array(),
-			   $template;
+			   $template,
+			   $_data = array();
 
 		public function notfoundAction() {
 			// echo 'Sorry This Class Is Not Found';
@@ -34,6 +35,8 @@
 			if ($this->actions == FrontController::NOT_FOUND_ACTIONS || !file_exists($path)) {
 				$path = ADMIN_VIEW_PATH . 'notfound' . DS . 'notfound.view.php';
 			}
+
+			$this->template->getData($this->_data);
 			$this->template->setActionViewFile($path);
 			$this->template->renderTemplates();
 		}			   
