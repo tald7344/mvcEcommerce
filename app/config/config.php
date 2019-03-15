@@ -18,3 +18,8 @@
 	defined('DATABASE_NAME') 		? null : define('DATABASE_NAME', 'mvc_market');
 	defined('DATABASE_USERNAME') 	? null : define('DATABASE_USERNAME', 'root');
 	defined('DATABASE_PASSWORD') 	? null : define('DATABASE_PASSWORD', '');
+
+	// Session Configuration
+	defined('SESSION_NAME')			? null : define('SESSION_NAME', '_TECOM_SESS');
+	defined('SESSION_DOMAIN')		? null : define('SESSION_DOMAIN', '.mvcecommerce.dev');	
+	defined('SESSION_SAVE_PATH')    ? null : define('SESSION_SAVE_PATH', APP_PATH . '..' . DS . 'sessions' . DS);
