@@ -9,7 +9,8 @@
 	defined('APP_PATH') 			? null : define('APP_PATH', dirname(realpath(__FILE__)) . DS . '..' . DS);
 	defined('VIEW_PATH') 			? null : define('VIEW_PATH', APP_PATH .'views' . DS);
 	defined('ADMIN_VIEW_PATH') 		? null : define('ADMIN_VIEW_PATH', APP_PATH . 'admin' . DS . 'views' . DS);
-	defined('ADMIN_TEMPLATES_PATH') 		? null : define('ADMIN_TEMPLATES_PATH', APP_PATH . 'admin' . DS . 'templates' . DS);
+	defined('ADMIN_TEMPLATES_PATH')	? null : define('ADMIN_TEMPLATES_PATH', APP_PATH . 'admin' . DS . 'templates' . DS);
+	defined('ADMIN_LANGUAGES_PATH') ? null : define('ADMIN_LANGUAGES_PATH', APP_PATH . 'admin' . DS . 'languages' . DS);	
 	defined('JS') 					? null : define('JS', DS . 'js' . DS);
 	defined('CSS') 					? null : define('CSS', DS . 'css' . DS);
 	
@@ -23,3 +24,6 @@
 	defined('SESSION_NAME')			? null : define('SESSION_NAME', '_TECOM_SESS');
 	defined('SESSION_DOMAIN')		? null : define('SESSION_DOMAIN', '.mvcecommerce.dev');	
 	defined('SESSION_SAVE_PATH')    ? null : define('SESSION_SAVE_PATH', APP_PATH . '..' . DS . 'sessions' . DS);
+
+	// Defualt Languages
+	defined('DEFAULT_LANGUAGES')    ? null : define('DEFAULT_LANGUAGES', 'ar');

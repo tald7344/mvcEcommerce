@@ -7,8 +7,9 @@
 		public $controllers = 'index',
 			   $actions = 'default',
 			   $params = array(),
+			   $_data = array(),
 			   $template,
-			   $_data = array();
+			   $languages;
 
 		public function notfoundAction() {
 			// echo 'Sorry This Class Is Not Found';
@@ -30,14 +31,19 @@
 			$this->template = $template;
 		}
 
+		public function getLanguages($languages) {
+			$this->languages = $languages;
+		}		
+
 		protected function _view() {
 			$path = ADMIN_VIEW_PATH . $this->controllers . DS . $this->actions . '.view.php';
 			if ($this->actions == FrontController::NOT_FOUND_ACTIONS || !file_exists($path)) {
 				$path = ADMIN_VIEW_PATH . 'notfound' . DS . 'notfound.view.php';
 			}
-
-			$this->template->getData($this->_data);
-			$this->template->setActionViewFile($path);
+			// Merger Data Array With Dictionary Array
+			$data = array_merge($this->_data, $this->languages->getDictionary());
+			$this->template->getData($data); // Send Mergeing Array TO Template Class
+			$this->template->setActionViewFile($path); 
 			$this->template->renderTemplates();
 		}			   
 

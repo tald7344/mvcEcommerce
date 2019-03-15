@@ -10,6 +10,7 @@
 		use Helper;
 
 		public function defaultAction() {
+			$this->languages->lang('template.common');
 			$this->_data['categories'] = CategoriesModel::getAll();
 			$this->_view();
 		}

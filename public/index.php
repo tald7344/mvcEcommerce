@@ -5,6 +5,7 @@
 	use PHPECOM\Libraries\Template;
 	use PHPECOM\Libraries\Database\DatabaseHandler;
 	use PHPECOM\Libraries\SessionManager;
+	use PHPECOM\Libraries\Languages;
 
 
 	if (!defined('DS')) {
@@ -16,8 +17,13 @@
 	$templatePath = require APP_PATH . 'config' . DS . 'templateconfig.php';
 
 	$session = new SessionManager();
+	$session->start();
+	if (!isset($session->lang)) {
+		$session->lang = DEFAULT_LANGUAGES;
+	}
+	$languages = new Languages();
 	DatabaseHandler::getInstance();
 	$template = new Template($templatePath);
 
-	$frontcontroller = new FrontController($template);
+	$frontcontroller = new FrontController($template, $languages);
 	$frontcontroller->dispatch();
