@@ -5,10 +5,15 @@
 	class Template {
 		private $_templatesPath,
 				$_data,
-				$_action_view;
+				$_action_view,
+				$_registry;
 
 		public function __construct($templatesPath) {
 			$this->_templatesPath = $templatesPath;
+		}
+
+		public function __get($key) {
+			return $this->_registry->$key;
 		}
 
 		public function getData($data) {
@@ -17,6 +22,10 @@
 
 		public function setActionViewFile($path) {
 			$this->_action_view = $path;
+		}
+
+		public function getRegistry($registry) {
+			$this->_registry = $registry;
 		}
 
 		private function renderTemplateHeaderStart() {

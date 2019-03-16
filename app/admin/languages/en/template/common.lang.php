@@ -1,8 +1,8 @@
 <?php
 
-$_['dashboard'] = 'Dashboard';
-$_['categories'] = 'Categories';
-$_['items'] = 'Items';
-$_['members'] = 'Members';
-$_['comments'] = 'Comments';
+$_['text_dashboard'] = 'Dashboard';
+$_['text_categories'] = 'Categories';
+$_['text_items'] = 'Items';
+$_['text_members'] = 'Members';
+$_['text_comments'] = 'Comments';
 $_['logout'] = 'Logout';

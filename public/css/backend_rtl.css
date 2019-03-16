@@ -4,13 +4,22 @@ body {
 }
 /*End General Styles*/
 
+/*Start Nav Secion*/
+.navbar-expand-lg .navbar-custom {
+	margin-left: auto!important; /*Edit In ltr*/
+}
+/*End Navbar Section*/
+
 /*Start Admin Categories Section*/
 .categories h1 {
 	font-size: 60px;
 	color: #868e96;
 }
 .categories a.btn {
-	float: right /*Edit In rtl*/
+	float: left /*Edit In ltr*/
+}
+.custom-card {
+    text-align: right; /*Edit In ltr*/
 }
 .custom-card .cat_section {
     border-bottom: 1px dashed #ccc;

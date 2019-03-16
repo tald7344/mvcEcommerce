@@ -9,7 +9,11 @@
 			   $params = array(),
 			   $_data = array(),
 			   $template,
-			   $languages;
+			   $registry;
+
+		public function __get($key) {
+			return $this->registry->$key;
+		}
 
 		public function notfoundAction() {
 			// echo 'Sorry This Class Is Not Found';
@@ -31,8 +35,8 @@
 			$this->template = $template;
 		}
 
-		public function getLanguages($languages) {
-			$this->languages = $languages;
+		public function getRegistry($registry) {
+			$this->registry = $registry;
 		}		
 
 		protected function _view() {
@@ -44,6 +48,7 @@
 			$data = array_merge($this->_data, $this->languages->getDictionary());
 			$this->template->getData($data); // Send Mergeing Array TO Template Class
 			$this->template->setActionViewFile($path); 
+			$this->template->getRegistry($this->registry);
 			$this->template->renderTemplates();
 		}			   
 

@@ -13,11 +13,11 @@
 				$_actions = 'default',
 				$_params = array(),
 				$_template,
-				$_languages;
+				$_registry;
 
-		public function __construct(Template $template, Languages $languages) {
+		public function __construct(Template $template, Registry $registry) {
 			$this->_template = $template;
-			$this->_languages = $languages;
+			$this->_registry = $registry;
 			$this->parseUrl();
 		}
 
@@ -60,7 +60,7 @@
 			$controller->getActions($this->_actions);
 			$controller->getParams($this->_params);
 			$controller->getTemplate($this->_template);
-			$controller->getLanguages($this->_languages);
+			$controller->getRegistry($this->_registry);
 			$controller->$actionsname();
 		}
 

@@ -6,6 +6,7 @@
 	use PHPECOM\Libraries\Database\DatabaseHandler;
 	use PHPECOM\Libraries\SessionManager;
 	use PHPECOM\Libraries\Languages;
+	use PHPECOM\Libraries\Registry;
 
 
 	if (!defined('DS')) {
@@ -14,16 +15,23 @@
 
 	require '..' . DS . 'app' . DS . 'config' . DS . 'config.php';
 	require APP_PATH . 'libraries' . DS . 'autoload.php';
-	$templatePath = require APP_PATH . 'config' . DS . 'templateconfig.php';
 
 	$session = new SessionManager();
 	$session->start();
 	if (!isset($session->lang)) {
 		$session->lang = DEFAULT_LANGUAGES;
 	}
+
+	$templatePath = require APP_PATH . 'config' . DS . 'templateconfig.php';
+
 	$languages = new Languages();
 	DatabaseHandler::getInstance();
 	$template = new Template($templatePath);
 
-	$frontcontroller = new FrontController($template, $languages);
+	$registry = Registry::getInstance();
+	$registry->languages = $languages;
+	$registry->session = $session;
+	
+
+	$frontcontroller = new FrontController($template, $registry);
 	$frontcontroller->dispatch();

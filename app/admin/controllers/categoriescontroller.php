@@ -11,6 +11,7 @@
 
 		public function defaultAction() {
 			$this->languages->lang('template.common');
+			$this->languages->lang('categories.default');
 			$this->_data['categories'] = CategoriesModel::getAll();
 			$this->_view();
 		}
