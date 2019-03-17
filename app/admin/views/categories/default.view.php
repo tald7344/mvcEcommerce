@@ -1,3 +1,11 @@
+<?php 
+	$messages = $this->messenger->getMessages();
+	if (!empty($messages)) {
+		foreach ($messages as $message) {
+			echo '<div class="alert alert-'. $message[1].' text-center hidden p-1 my-4">' . $message[0] . '</div>';
+		}
+	}
+?>	
 <div class="categories">
 	<h1 class="text-center my-4"><?= $text_category_page?></h1>
 	<div class="row">
@@ -13,6 +21,11 @@
 					<?php
 						foreach ($categories as $cat) {
 							echo '<div class="cat_section">';
+								echo '<div class="control_section">';?>
+									<a class="btn btn-danger btn-sm mr-1 px-2 py-0" href="/admin/categories/delete/<?=$cat->Catid?>" onclick="if (!confirm('<?=$alert_delete_msg?>')) return false;"><?=$delete?></a>
+									<?php
+									echo '<a class="btn btn-primary btn-sm mr-1 px-2 py-0" href="/admin/categories/edit/' . $cat->Catid . '">' . $edit . '</a>';
+								echo '</div>';
 								echo '<h5 class="mb-0">' . $cat->Catname . '</h5>';
 								echo '<div class="full-view">';
 									echo '<p>';

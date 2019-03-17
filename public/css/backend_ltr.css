@@ -21,17 +21,27 @@ body {
 }
 .custom-card {
     text-align: left; /*Edit In rtl*/
+    overflow: hidden;
 }
 .custom-card .cat_section {
     border-bottom: 1px dashed #ccc;
     padding: 10px 0;
     cursor: pointer;
+    position: relative;
 }
 .custom-card .cat_section:first-of-type {
     padding: 0 0 10px 0;	
 }
 .custom-card .cat_section:last-of-type {
     border-bottom: none;
+}
+.custom-card .cat_section .control_section {
+	position: absolute;
+	right: -137px; /*Eidt in rtl*/
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out	
 }
 .custom-card .cat_section span {
 	color: #fff;

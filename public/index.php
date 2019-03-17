@@ -7,6 +7,7 @@
 	use PHPECOM\Libraries\SessionManager;
 	use PHPECOM\Libraries\Languages;
 	use PHPECOM\Libraries\Registry;
+	use PHPECOM\Libraries\Messenger;
 
 
 	if (!defined('DS')) {
@@ -27,11 +28,12 @@
 	$languages = new Languages();
 	DatabaseHandler::getInstance();
 	$template = new Template($templatePath);
+	$messenger = Messenger::getInstance($session);
 
 	$registry = Registry::getInstance();
 	$registry->languages = $languages;
 	$registry->session = $session;
-	
+	$registry->messenger = $messenger;
 
 	$frontcontroller = new FrontController($template, $registry);
 	$frontcontroller->dispatch();

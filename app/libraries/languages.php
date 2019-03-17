@@ -26,6 +26,12 @@
 			}
 		}
 
+		public function getKey($key) {
+			return $this->_dictionary[$key];
+		}
+
+
+
 		public function getDictionary() {
 			return $this->_dictionary;
 		}
